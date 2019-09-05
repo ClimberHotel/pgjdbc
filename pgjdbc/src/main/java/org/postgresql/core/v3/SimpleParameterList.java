@@ -133,17 +133,17 @@ class SimpleParameterList implements V3ParameterList {
 
   @Override
   public void setBytea(int index, byte[] data, int offset, int length) throws SQLException {
-    bind(index, new StreamWrapper(data, offset, length), Oid.BYTEA, BINARY);
+    bind(index, data, offset, BINARY);
   }
 
   @Override
   public void setBytea(int index, InputStream stream, int length) throws SQLException {
-    bind(index, new StreamWrapper(stream, length), Oid.BYTEA, BINARY);
+    bind(index, stream, length, BINARY);
   }
 
   @Override
   public void setBytea(int index, InputStream stream) throws SQLException {
-    bind(index, new StreamWrapper(stream), Oid.BYTEA, BINARY);
+    bind(index, stream, Oid.BYTEA, BINARY);
   }
 
   @Override
