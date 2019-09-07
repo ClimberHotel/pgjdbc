@@ -148,7 +148,7 @@ class SimpleParameterList implements V3ParameterList {
 
   @Override
   public void setText(int index, InputStream stream) throws SQLException {
-    bind(index, new StreamWrapper(stream), Oid.TEXT, TEXT);
+    bind(index, stream, Oid.TEXT, TEXT);
   }
 
   @Override
@@ -376,7 +376,7 @@ class SimpleParameterList implements V3ParameterList {
     }
 
     // Binary-format bytea?
-    if (paramValues[index] instanceof StreamWrapper) {
+    if (paramValues[index] instanceof InputStream) {
       streamBytea(pgStream, (StreamWrapper) paramValues[index]);
       return;
     }
